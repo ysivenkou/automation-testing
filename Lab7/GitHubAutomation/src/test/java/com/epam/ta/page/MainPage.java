@@ -69,6 +69,13 @@ public class MainPage extends AbstractPage {
     @FindBy(xpath = "//*[@id=\"guestsAdults\"]")
     private WebElement adultsNumber;
 
+    @FindBy(xpath = "//*[@class=\"age-picker\"]")
+    private WebElement agePicker;
+
+    public WebElement getAgePicker() {
+        return agePicker;
+    }
+
     public void search() {
         buttonFindHotels.click();
     }
@@ -101,7 +108,7 @@ public class MainPage extends AbstractPage {
     }
 
 
-    public void insertGuestsAdults(){
+    public void insertGuestsAdults(int amount){
         guestsSelectButton.click();
         for (int i = 0; i < amount; i++){
             adultsInremention();
@@ -109,12 +116,20 @@ public class MainPage extends AbstractPage {
         LOGGER.info(amount + " guests selected");
     }
 
-    public void insertGuestsChildren(){
+    public void insertGuestsChildren(int amount){
         guestsSelectButton.click();
         for (int i = 0; i < amount; i++){
             childrensInremention();
         }
         LOGGER.info(amount + " guests selected");
+    }
+
+    public void insertGuestsRooms(int amount){
+        guestsSelectButton.click();
+        for (int i = 0; i < amount; i++){
+            adultsInremention();
+        }
+        LOGGER.info(amount + " rooms selected");
     }
 
     public boolean checkCurrentLocation(Place expectedPlace){

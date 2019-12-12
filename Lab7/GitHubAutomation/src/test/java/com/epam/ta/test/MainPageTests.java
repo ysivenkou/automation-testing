@@ -1,5 +1,6 @@
 package com.epam.ta.test;
 
+import com.epam.ta.model.Date;
 import com.epam.ta.model.Place;
 import com.epam.ta.model.User;
 import com.epam.ta.page.LoginPage;
@@ -7,6 +8,8 @@ import com.epam.ta.page.MainPage;
 import com.epam.ta.service.PlaceCreator;
 import com.epam.ta.service.UserCreator;
 import com.epam.ta.util.StringUtils;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -38,5 +41,34 @@ public class MainPageTests extends CommonConditions {
         Assert.assertEquals(currentAdultsNumber+1, newAdultsNumber);
     }
 
+    @Test(description = "check autoincremention of rooms amount")
+    public void roomTest() {
+        int trueAmount = 5;
+        MainPage page = new MainPage(driver).openPage();
+        page.insertGuestsAdults(4);
+        page.insertGuestsRooms(17);
+        int roomsAmount = Integer.valueOf(page.getAdultsNumber());
+        Assert.assertEquals(roomsAmount, trueAmount);
+    }
+
+    @Test(description = "check having age picker for children")
+    public void childAgeTest() {
+        MainPage page = new MainPage(driver).openPage();
+        page.insertGuestsChildren(1);
+        Assert.assertNotNull(page.getAgePicker());
+    }
+
+    @Test(description = "find hotels")
+    public void findHotelsTest() {
+        int trueAmount = 5;
+        MainPage page = new MainPage(driver).openPage();
+        Date date = new Date("Dec 26", "Jan 15");
+        page.insertLocation(new Place("Budapest"));
+        page.insertCheckinDate(date.getStartDate());
+        page.insertCheckinDate(date.getStartDate())
+        page.insertGuestsAdults(3);
+        page.search();
+        Assert.asser
+    }
 }
 

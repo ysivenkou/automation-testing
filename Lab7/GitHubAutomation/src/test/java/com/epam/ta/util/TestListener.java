@@ -17,22 +17,26 @@ import java.time.format.DateTimeFormatter;
 
 
 public class TestListener implements ITestListener {
-    private Logger log = LogManager.getRootLogger();
+    private Logger logger = LogManager.getRootLogger();
 
     public void onTestStart(ITestResult iTestResult) {
+        logger.info("The test has been started");
 
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
-
+        saveScreenshot();
+        logger.info("Test is successfuly ran");
     }
 
     public void onTestFailure(ITestResult iTestResult) {
         saveScreenshot();
+        logger.info("Test is failed");
     }
 
     public void onTestSkipped(ITestResult iTestResult) {
-
+        saveScreenshot();
+        logger.info("Skiped test");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
@@ -57,7 +61,7 @@ public class TestListener implements ITestListener {
                     + getCurrentTimeAsString() +
                     ".png"));
         } catch (IOException e) {
-            log.error("Failed to save screenshot: " + e.getLocalizedMessage());
+            logger.error("Failed to save screenshot: " + e.getLocalizedMessage());
         }
     }
 

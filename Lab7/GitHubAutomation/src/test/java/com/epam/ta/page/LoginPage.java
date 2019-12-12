@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends AbstractPage
 {
-	private final Logger logger = LogManager.getRootLogger();
 	private final String PAGE_URL = "https://github.com/login";
 
 	@FindBy(id = "login_field")
@@ -28,6 +27,7 @@ public class LoginPage extends AbstractPage
 	{
 		super(driver);
 		PageFactory.initElements(this.driver, this);
+		logger.info("Created class LoginPage");
 	}
 
 	@Override
