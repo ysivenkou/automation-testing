@@ -11,7 +11,7 @@ public class Date {
         this.dateend = dateend;
     }
 
-    public String getStartDate(){
+    public Date getStartDate(){
         return datestart;
     }
 

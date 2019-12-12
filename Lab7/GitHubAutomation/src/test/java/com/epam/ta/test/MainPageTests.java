@@ -65,10 +65,9 @@ public class MainPageTests extends CommonConditions {
         Date date = new Date("Dec 26", "Jan 15");
         page.insertLocation(new Place("Budapest"));
         page.insertCheckinDate(date.getStartDate());
-        page.insertCheckinDate(date.getStartDate())
+        page.insertCheckinDate(date.getEndDate());
         page.insertGuestsAdults(3);
         page.search();
-        Assert.asser
     }
 }
 
